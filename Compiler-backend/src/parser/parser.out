@@ -1,0 +1,2114 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> declarations
+Rule 2     declarations -> declarations declaration
+Rule 3     declarations -> declaration
+Rule 4     declaration -> var_declaration
+Rule 5     declaration -> func_declaration
+Rule 6     var_declaration -> type_specifier IDENTIFIER SEMICOLON
+Rule 7     var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON
+Rule 8     type_specifier -> INT
+Rule 9     type_specifier -> FLOAT
+Rule 10    func_declaration -> type_specifier IDENTIFIER LPAREN params RPAREN compound_stmt
+Rule 11    params -> param_list
+Rule 12    params -> empty
+Rule 13    param_list -> param_list COMMA param
+Rule 14    param_list -> param
+Rule 15    param -> type_specifier IDENTIFIER
+Rule 16    compound_stmt -> LBRACE stmt_list RBRACE
+Rule 17    stmt_list -> stmt_list statement
+Rule 18    stmt_list -> empty
+Rule 19    statement -> expr_stmt
+Rule 20    statement -> var_declaration
+Rule 21    statement -> compound_stmt
+Rule 22    statement -> if_stmt
+Rule 23    statement -> return_stmt
+Rule 24    if_stmt -> IF LPAREN expression RPAREN statement
+Rule 25    if_stmt -> IF LPAREN expression RPAREN statement ELSE statement
+Rule 26    return_stmt -> RETURN expression SEMICOLON
+Rule 27    expr_stmt -> expression SEMICOLON
+Rule 28    expression -> expression PLUS expression
+Rule 29    expression -> expression MINUS expression
+Rule 30    expression -> expression MULTIPLY expression
+Rule 31    expression -> expression DIVIDE expression
+Rule 32    expression -> expression LT expression
+Rule 33    expression -> expression GT expression
+Rule 34    expression -> expression LE expression
+Rule 35    expression -> expression GE expression
+Rule 36    expression -> expression EQ expression
+Rule 37    expression -> expression NE expression
+Rule 38    expression -> MINUS expression
+Rule 39    expression -> LPAREN expression RPAREN
+Rule 40    expression -> INT_LITERAL
+Rule 41    expression -> FLOAT_LITERAL
+Rule 42    expression -> IDENTIFIER
+Rule 43    expression -> IDENTIFIER LPAREN arg_list RPAREN
+Rule 44    arg_list -> arg_list COMMA expression
+Rule 45    arg_list -> expression
+Rule 46    arg_list -> empty
+Rule 47    empty -> <empty>
+Rule 48    expression -> STRING_LITERAL
+Rule 49    preprocessor -> <empty>
+
+Terminals, with rules where they appear
+
+ASSIGN               : 7
+COMMA                : 13 44
+DIVIDE               : 31
+ELSE                 : 25
+EQ                   : 36
+FLOAT                : 9
+FLOAT_LITERAL        : 41
+GE                   : 35
+GT                   : 33
+IDENTIFIER           : 6 7 10 15 42 43
+IF                   : 24 25
+INT                  : 8
+INT_LITERAL          : 40
+LBRACE               : 16
+LE                   : 34
+LPAREN               : 10 24 25 39 43
+LT                   : 32
+MINUS                : 29 38
+MULTIPLY             : 30
+NE                   : 37
+PLUS                 : 28
+RBRACE               : 16
+RETURN               : 26
+RPAREN               : 10 24 25 39 43
+SEMICOLON            : 6 7 26 27
+STRING_LITERAL       : 48
+error                : 
+
+Nonterminals, with rules where they appear
+
+arg_list             : 43 44
+compound_stmt        : 10 21
+declaration          : 2 3
+declarations         : 1 2
+empty                : 12 18 46
+expr_stmt            : 19
+expression           : 7 24 25 26 27 28 28 29 29 30 30 31 31 32 32 33 33 34 34 35 35 36 36 37 37 38 39 44 45
+func_declaration     : 5
+if_stmt              : 22
+param                : 13 14
+param_list           : 11 13
+params               : 10
+preprocessor         : 
+program              : 0
+return_stmt          : 23
+statement            : 17 24 25 25
+stmt_list            : 16 17
+type_specifier       : 6 7 10 15
+var_declaration      : 4 20
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . declarations
+    (2) declarations -> . declarations declaration
+    (3) declarations -> . declaration
+    (4) declaration -> . var_declaration
+    (5) declaration -> . func_declaration
+    (6) var_declaration -> . type_specifier IDENTIFIER SEMICOLON
+    (7) var_declaration -> . type_specifier IDENTIFIER ASSIGN expression SEMICOLON
+    (10) func_declaration -> . type_specifier IDENTIFIER LPAREN params RPAREN compound_stmt
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . FLOAT
+
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+
+    program                        shift and go to state 1
+    declarations                   shift and go to state 2
+    declaration                    shift and go to state 3
+    var_declaration                shift and go to state 4
+    func_declaration               shift and go to state 5
+    type_specifier                 shift and go to state 6
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> declarations .
+    (2) declarations -> declarations . declaration
+    (4) declaration -> . var_declaration
+    (5) declaration -> . func_declaration
+    (6) var_declaration -> . type_specifier IDENTIFIER SEMICOLON
+    (7) var_declaration -> . type_specifier IDENTIFIER ASSIGN expression SEMICOLON
+    (10) func_declaration -> . type_specifier IDENTIFIER LPAREN params RPAREN compound_stmt
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . FLOAT
+
+    $end            reduce using rule 1 (program -> declarations .)
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+
+    declaration                    shift and go to state 9
+    var_declaration                shift and go to state 4
+    func_declaration               shift and go to state 5
+    type_specifier                 shift and go to state 6
+
+state 3
+
+    (3) declarations -> declaration .
+
+    INT             reduce using rule 3 (declarations -> declaration .)
+    FLOAT           reduce using rule 3 (declarations -> declaration .)
+    $end            reduce using rule 3 (declarations -> declaration .)
+
+
+state 4
+
+    (4) declaration -> var_declaration .
+
+    INT             reduce using rule 4 (declaration -> var_declaration .)
+    FLOAT           reduce using rule 4 (declaration -> var_declaration .)
+    $end            reduce using rule 4 (declaration -> var_declaration .)
+
+
+state 5
+
+    (5) declaration -> func_declaration .
+
+    INT             reduce using rule 5 (declaration -> func_declaration .)
+    FLOAT           reduce using rule 5 (declaration -> func_declaration .)
+    $end            reduce using rule 5 (declaration -> func_declaration .)
+
+
+state 6
+
+    (6) var_declaration -> type_specifier . IDENTIFIER SEMICOLON
+    (7) var_declaration -> type_specifier . IDENTIFIER ASSIGN expression SEMICOLON
+    (10) func_declaration -> type_specifier . IDENTIFIER LPAREN params RPAREN compound_stmt
+
+    IDENTIFIER      shift and go to state 10
+
+
+state 7
+
+    (8) type_specifier -> INT .
+
+    IDENTIFIER      reduce using rule 8 (type_specifier -> INT .)
+
+
+state 8
+
+    (9) type_specifier -> FLOAT .
+
+    IDENTIFIER      reduce using rule 9 (type_specifier -> FLOAT .)
+
+
+state 9
+
+    (2) declarations -> declarations declaration .
+
+    INT             reduce using rule 2 (declarations -> declarations declaration .)
+    FLOAT           reduce using rule 2 (declarations -> declarations declaration .)
+    $end            reduce using rule 2 (declarations -> declarations declaration .)
+
+
+state 10
+
+    (6) var_declaration -> type_specifier IDENTIFIER . SEMICOLON
+    (7) var_declaration -> type_specifier IDENTIFIER . ASSIGN expression SEMICOLON
+    (10) func_declaration -> type_specifier IDENTIFIER . LPAREN params RPAREN compound_stmt
+
+    SEMICOLON       shift and go to state 11
+    ASSIGN          shift and go to state 12
+    LPAREN          shift and go to state 13
+
+
+state 11
+
+    (6) var_declaration -> type_specifier IDENTIFIER SEMICOLON .
+
+    INT             reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    FLOAT           reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    $end            reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    RBRACE          reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    LBRACE          reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    IF              reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    RETURN          reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    MINUS           reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    LPAREN          reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    INT_LITERAL     reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    FLOAT_LITERAL   reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    IDENTIFIER      reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    STRING_LITERAL  reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+    ELSE            reduce using rule 6 (var_declaration -> type_specifier IDENTIFIER SEMICOLON .)
+
+
+state 12
+
+    (7) var_declaration -> type_specifier IDENTIFIER ASSIGN . expression SEMICOLON
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 15
+
+state 13
+
+    (10) func_declaration -> type_specifier IDENTIFIER LPAREN . params RPAREN compound_stmt
+    (11) params -> . param_list
+    (12) params -> . empty
+    (13) param_list -> . param_list COMMA param
+    (14) param_list -> . param
+    (47) empty -> .
+    (15) param -> . type_specifier IDENTIFIER
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . FLOAT
+
+    RPAREN          reduce using rule 47 (empty -> .)
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+
+    type_specifier                 shift and go to state 21
+    params                         shift and go to state 22
+    param_list                     shift and go to state 23
+    empty                          shift and go to state 24
+    param                          shift and go to state 25
+
+state 14
+
+    (42) expression -> IDENTIFIER .
+    (43) expression -> IDENTIFIER . LPAREN arg_list RPAREN
+
+    SEMICOLON       reduce using rule 42 (expression -> IDENTIFIER .)
+    PLUS            reduce using rule 42 (expression -> IDENTIFIER .)
+    MINUS           reduce using rule 42 (expression -> IDENTIFIER .)
+    MULTIPLY        reduce using rule 42 (expression -> IDENTIFIER .)
+    DIVIDE          reduce using rule 42 (expression -> IDENTIFIER .)
+    LT              reduce using rule 42 (expression -> IDENTIFIER .)
+    GT              reduce using rule 42 (expression -> IDENTIFIER .)
+    LE              reduce using rule 42 (expression -> IDENTIFIER .)
+    GE              reduce using rule 42 (expression -> IDENTIFIER .)
+    EQ              reduce using rule 42 (expression -> IDENTIFIER .)
+    NE              reduce using rule 42 (expression -> IDENTIFIER .)
+    RPAREN          reduce using rule 42 (expression -> IDENTIFIER .)
+    COMMA           reduce using rule 42 (expression -> IDENTIFIER .)
+    LPAREN          shift and go to state 26
+
+
+state 15
+
+    (7) var_declaration -> type_specifier IDENTIFIER ASSIGN expression . SEMICOLON
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       shift and go to state 27
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+    LT              shift and go to state 32
+    GT              shift and go to state 33
+    LE              shift and go to state 34
+    GE              shift and go to state 35
+    EQ              shift and go to state 36
+    NE              shift and go to state 37
+
+
+state 16
+
+    (38) expression -> MINUS . expression
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 38
+
+state 17
+
+    (39) expression -> LPAREN . expression RPAREN
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 39
+
+state 18
+
+    (40) expression -> INT_LITERAL .
+
+    SEMICOLON       reduce using rule 40 (expression -> INT_LITERAL .)
+    PLUS            reduce using rule 40 (expression -> INT_LITERAL .)
+    MINUS           reduce using rule 40 (expression -> INT_LITERAL .)
+    MULTIPLY        reduce using rule 40 (expression -> INT_LITERAL .)
+    DIVIDE          reduce using rule 40 (expression -> INT_LITERAL .)
+    LT              reduce using rule 40 (expression -> INT_LITERAL .)
+    GT              reduce using rule 40 (expression -> INT_LITERAL .)
+    LE              reduce using rule 40 (expression -> INT_LITERAL .)
+    GE              reduce using rule 40 (expression -> INT_LITERAL .)
+    EQ              reduce using rule 40 (expression -> INT_LITERAL .)
+    NE              reduce using rule 40 (expression -> INT_LITERAL .)
+    RPAREN          reduce using rule 40 (expression -> INT_LITERAL .)
+    COMMA           reduce using rule 40 (expression -> INT_LITERAL .)
+
+
+state 19
+
+    (41) expression -> FLOAT_LITERAL .
+
+    SEMICOLON       reduce using rule 41 (expression -> FLOAT_LITERAL .)
+    PLUS            reduce using rule 41 (expression -> FLOAT_LITERAL .)
+    MINUS           reduce using rule 41 (expression -> FLOAT_LITERAL .)
+    MULTIPLY        reduce using rule 41 (expression -> FLOAT_LITERAL .)
+    DIVIDE          reduce using rule 41 (expression -> FLOAT_LITERAL .)
+    LT              reduce using rule 41 (expression -> FLOAT_LITERAL .)
+    GT              reduce using rule 41 (expression -> FLOAT_LITERAL .)
+    LE              reduce using rule 41 (expression -> FLOAT_LITERAL .)
+    GE              reduce using rule 41 (expression -> FLOAT_LITERAL .)
+    EQ              reduce using rule 41 (expression -> FLOAT_LITERAL .)
+    NE              reduce using rule 41 (expression -> FLOAT_LITERAL .)
+    RPAREN          reduce using rule 41 (expression -> FLOAT_LITERAL .)
+    COMMA           reduce using rule 41 (expression -> FLOAT_LITERAL .)
+
+
+state 20
+
+    (48) expression -> STRING_LITERAL .
+
+    SEMICOLON       reduce using rule 48 (expression -> STRING_LITERAL .)
+    PLUS            reduce using rule 48 (expression -> STRING_LITERAL .)
+    MINUS           reduce using rule 48 (expression -> STRING_LITERAL .)
+    MULTIPLY        reduce using rule 48 (expression -> STRING_LITERAL .)
+    DIVIDE          reduce using rule 48 (expression -> STRING_LITERAL .)
+    LT              reduce using rule 48 (expression -> STRING_LITERAL .)
+    GT              reduce using rule 48 (expression -> STRING_LITERAL .)
+    LE              reduce using rule 48 (expression -> STRING_LITERAL .)
+    GE              reduce using rule 48 (expression -> STRING_LITERAL .)
+    EQ              reduce using rule 48 (expression -> STRING_LITERAL .)
+    NE              reduce using rule 48 (expression -> STRING_LITERAL .)
+    RPAREN          reduce using rule 48 (expression -> STRING_LITERAL .)
+    COMMA           reduce using rule 48 (expression -> STRING_LITERAL .)
+
+
+state 21
+
+    (15) param -> type_specifier . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 40
+
+
+state 22
+
+    (10) func_declaration -> type_specifier IDENTIFIER LPAREN params . RPAREN compound_stmt
+
+    RPAREN          shift and go to state 41
+
+
+state 23
+
+    (11) params -> param_list .
+    (13) param_list -> param_list . COMMA param
+
+    RPAREN          reduce using rule 11 (params -> param_list .)
+    COMMA           shift and go to state 42
+
+
+state 24
+
+    (12) params -> empty .
+
+    RPAREN          reduce using rule 12 (params -> empty .)
+
+
+state 25
+
+    (14) param_list -> param .
+
+    COMMA           reduce using rule 14 (param_list -> param .)
+    RPAREN          reduce using rule 14 (param_list -> param .)
+
+
+state 26
+
+    (43) expression -> IDENTIFIER LPAREN . arg_list RPAREN
+    (44) arg_list -> . arg_list COMMA expression
+    (45) arg_list -> . expression
+    (46) arg_list -> . empty
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+    (47) empty -> .
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+    RPAREN          reduce using rule 47 (empty -> .)
+    COMMA           reduce using rule 47 (empty -> .)
+
+    arg_list                       shift and go to state 43
+    expression                     shift and go to state 44
+    empty                          shift and go to state 45
+
+state 27
+
+    (7) var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .
+
+    INT             reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    FLOAT           reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    $end            reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    RBRACE          reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    LBRACE          reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    IF              reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    RETURN          reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    MINUS           reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    LPAREN          reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    INT_LITERAL     reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    FLOAT_LITERAL   reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    IDENTIFIER      reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    STRING_LITERAL  reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+    ELSE            reduce using rule 7 (var_declaration -> type_specifier IDENTIFIER ASSIGN expression SEMICOLON .)
+
+
+state 28
+
+    (28) expression -> expression PLUS . expression
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 46
+
+state 29
+
+    (29) expression -> expression MINUS . expression
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 47
+
+state 30
+
+    (30) expression -> expression MULTIPLY . expression
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 48
+
+state 31
+
+    (31) expression -> expression DIVIDE . expression
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 49
+
+state 32
+
+    (32) expression -> expression LT . expression
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 50
+
+state 33
+
+    (33) expression -> expression GT . expression
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 51
+
+state 34
+
+    (34) expression -> expression LE . expression
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 52
+
+state 35
+
+    (35) expression -> expression GE . expression
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 53
+
+state 36
+
+    (36) expression -> expression EQ . expression
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 54
+
+state 37
+
+    (37) expression -> expression NE . expression
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 55
+
+state 38
+
+    (38) expression -> MINUS expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       reduce using rule 38 (expression -> MINUS expression .)
+    PLUS            reduce using rule 38 (expression -> MINUS expression .)
+    MINUS           reduce using rule 38 (expression -> MINUS expression .)
+    MULTIPLY        reduce using rule 38 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 38 (expression -> MINUS expression .)
+    LT              reduce using rule 38 (expression -> MINUS expression .)
+    GT              reduce using rule 38 (expression -> MINUS expression .)
+    LE              reduce using rule 38 (expression -> MINUS expression .)
+    GE              reduce using rule 38 (expression -> MINUS expression .)
+    EQ              reduce using rule 38 (expression -> MINUS expression .)
+    NE              reduce using rule 38 (expression -> MINUS expression .)
+    RPAREN          reduce using rule 38 (expression -> MINUS expression .)
+    COMMA           reduce using rule 38 (expression -> MINUS expression .)
+
+  ! PLUS            [ shift and go to state 28 ]
+  ! MINUS           [ shift and go to state 29 ]
+  ! MULTIPLY        [ shift and go to state 30 ]
+  ! DIVIDE          [ shift and go to state 31 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GT              [ shift and go to state 33 ]
+  ! LE              [ shift and go to state 34 ]
+  ! GE              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NE              [ shift and go to state 37 ]
+
+
+state 39
+
+    (39) expression -> LPAREN expression . RPAREN
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    RPAREN          shift and go to state 56
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+    LT              shift and go to state 32
+    GT              shift and go to state 33
+    LE              shift and go to state 34
+    GE              shift and go to state 35
+    EQ              shift and go to state 36
+    NE              shift and go to state 37
+
+
+state 40
+
+    (15) param -> type_specifier IDENTIFIER .
+
+    COMMA           reduce using rule 15 (param -> type_specifier IDENTIFIER .)
+    RPAREN          reduce using rule 15 (param -> type_specifier IDENTIFIER .)
+
+
+state 41
+
+    (10) func_declaration -> type_specifier IDENTIFIER LPAREN params RPAREN . compound_stmt
+    (16) compound_stmt -> . LBRACE stmt_list RBRACE
+
+    LBRACE          shift and go to state 58
+
+    compound_stmt                  shift and go to state 57
+
+state 42
+
+    (13) param_list -> param_list COMMA . param
+    (15) param -> . type_specifier IDENTIFIER
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . FLOAT
+
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+
+    param                          shift and go to state 59
+    type_specifier                 shift and go to state 21
+
+state 43
+
+    (43) expression -> IDENTIFIER LPAREN arg_list . RPAREN
+    (44) arg_list -> arg_list . COMMA expression
+
+    RPAREN          shift and go to state 60
+    COMMA           shift and go to state 61
+
+
+state 44
+
+    (45) arg_list -> expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    RPAREN          reduce using rule 45 (arg_list -> expression .)
+    COMMA           reduce using rule 45 (arg_list -> expression .)
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+    LT              shift and go to state 32
+    GT              shift and go to state 33
+    LE              shift and go to state 34
+    GE              shift and go to state 35
+    EQ              shift and go to state 36
+    NE              shift and go to state 37
+
+
+state 45
+
+    (46) arg_list -> empty .
+
+    RPAREN          reduce using rule 46 (arg_list -> empty .)
+    COMMA           reduce using rule 46 (arg_list -> empty .)
+
+
+state 46
+
+    (28) expression -> expression PLUS expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       reduce using rule 28 (expression -> expression PLUS expression .)
+    PLUS            reduce using rule 28 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 28 (expression -> expression PLUS expression .)
+    LT              reduce using rule 28 (expression -> expression PLUS expression .)
+    GT              reduce using rule 28 (expression -> expression PLUS expression .)
+    LE              reduce using rule 28 (expression -> expression PLUS expression .)
+    GE              reduce using rule 28 (expression -> expression PLUS expression .)
+    EQ              reduce using rule 28 (expression -> expression PLUS expression .)
+    NE              reduce using rule 28 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 28 (expression -> expression PLUS expression .)
+    COMMA           reduce using rule 28 (expression -> expression PLUS expression .)
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+
+  ! MULTIPLY        [ reduce using rule 28 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 28 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 28 ]
+  ! MINUS           [ shift and go to state 29 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GT              [ shift and go to state 33 ]
+  ! LE              [ shift and go to state 34 ]
+  ! GE              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NE              [ shift and go to state 37 ]
+
+
+state 47
+
+    (29) expression -> expression MINUS expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       reduce using rule 29 (expression -> expression MINUS expression .)
+    PLUS            reduce using rule 29 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 29 (expression -> expression MINUS expression .)
+    LT              reduce using rule 29 (expression -> expression MINUS expression .)
+    GT              reduce using rule 29 (expression -> expression MINUS expression .)
+    LE              reduce using rule 29 (expression -> expression MINUS expression .)
+    GE              reduce using rule 29 (expression -> expression MINUS expression .)
+    EQ              reduce using rule 29 (expression -> expression MINUS expression .)
+    NE              reduce using rule 29 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 29 (expression -> expression MINUS expression .)
+    COMMA           reduce using rule 29 (expression -> expression MINUS expression .)
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+
+  ! MULTIPLY        [ reduce using rule 29 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 29 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 28 ]
+  ! MINUS           [ shift and go to state 29 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GT              [ shift and go to state 33 ]
+  ! LE              [ shift and go to state 34 ]
+  ! GE              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NE              [ shift and go to state 37 ]
+
+
+state 48
+
+    (30) expression -> expression MULTIPLY expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       reduce using rule 30 (expression -> expression MULTIPLY expression .)
+    PLUS            reduce using rule 30 (expression -> expression MULTIPLY expression .)
+    MINUS           reduce using rule 30 (expression -> expression MULTIPLY expression .)
+    MULTIPLY        reduce using rule 30 (expression -> expression MULTIPLY expression .)
+    DIVIDE          reduce using rule 30 (expression -> expression MULTIPLY expression .)
+    LT              reduce using rule 30 (expression -> expression MULTIPLY expression .)
+    GT              reduce using rule 30 (expression -> expression MULTIPLY expression .)
+    LE              reduce using rule 30 (expression -> expression MULTIPLY expression .)
+    GE              reduce using rule 30 (expression -> expression MULTIPLY expression .)
+    EQ              reduce using rule 30 (expression -> expression MULTIPLY expression .)
+    NE              reduce using rule 30 (expression -> expression MULTIPLY expression .)
+    RPAREN          reduce using rule 30 (expression -> expression MULTIPLY expression .)
+    COMMA           reduce using rule 30 (expression -> expression MULTIPLY expression .)
+
+  ! PLUS            [ shift and go to state 28 ]
+  ! MINUS           [ shift and go to state 29 ]
+  ! MULTIPLY        [ shift and go to state 30 ]
+  ! DIVIDE          [ shift and go to state 31 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GT              [ shift and go to state 33 ]
+  ! LE              [ shift and go to state 34 ]
+  ! GE              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NE              [ shift and go to state 37 ]
+
+
+state 49
+
+    (31) expression -> expression DIVIDE expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       reduce using rule 31 (expression -> expression DIVIDE expression .)
+    PLUS            reduce using rule 31 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 31 (expression -> expression DIVIDE expression .)
+    MULTIPLY        reduce using rule 31 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 31 (expression -> expression DIVIDE expression .)
+    LT              reduce using rule 31 (expression -> expression DIVIDE expression .)
+    GT              reduce using rule 31 (expression -> expression DIVIDE expression .)
+    LE              reduce using rule 31 (expression -> expression DIVIDE expression .)
+    GE              reduce using rule 31 (expression -> expression DIVIDE expression .)
+    EQ              reduce using rule 31 (expression -> expression DIVIDE expression .)
+    NE              reduce using rule 31 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 31 (expression -> expression DIVIDE expression .)
+    COMMA           reduce using rule 31 (expression -> expression DIVIDE expression .)
+
+  ! PLUS            [ shift and go to state 28 ]
+  ! MINUS           [ shift and go to state 29 ]
+  ! MULTIPLY        [ shift and go to state 30 ]
+  ! DIVIDE          [ shift and go to state 31 ]
+  ! LT              [ shift and go to state 32 ]
+  ! GT              [ shift and go to state 33 ]
+  ! LE              [ shift and go to state 34 ]
+  ! GE              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NE              [ shift and go to state 37 ]
+
+
+state 50
+
+    (32) expression -> expression LT expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       reduce using rule 32 (expression -> expression LT expression .)
+    LT              reduce using rule 32 (expression -> expression LT expression .)
+    GT              reduce using rule 32 (expression -> expression LT expression .)
+    LE              reduce using rule 32 (expression -> expression LT expression .)
+    GE              reduce using rule 32 (expression -> expression LT expression .)
+    EQ              reduce using rule 32 (expression -> expression LT expression .)
+    NE              reduce using rule 32 (expression -> expression LT expression .)
+    RPAREN          reduce using rule 32 (expression -> expression LT expression .)
+    COMMA           reduce using rule 32 (expression -> expression LT expression .)
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+
+  ! PLUS            [ reduce using rule 32 (expression -> expression LT expression .) ]
+  ! MINUS           [ reduce using rule 32 (expression -> expression LT expression .) ]
+  ! MULTIPLY        [ reduce using rule 32 (expression -> expression LT expression .) ]
+  ! DIVIDE          [ reduce using rule 32 (expression -> expression LT expression .) ]
+  ! LT              [ shift and go to state 32 ]
+  ! GT              [ shift and go to state 33 ]
+  ! LE              [ shift and go to state 34 ]
+  ! GE              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NE              [ shift and go to state 37 ]
+
+
+state 51
+
+    (33) expression -> expression GT expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       reduce using rule 33 (expression -> expression GT expression .)
+    LT              reduce using rule 33 (expression -> expression GT expression .)
+    GT              reduce using rule 33 (expression -> expression GT expression .)
+    LE              reduce using rule 33 (expression -> expression GT expression .)
+    GE              reduce using rule 33 (expression -> expression GT expression .)
+    EQ              reduce using rule 33 (expression -> expression GT expression .)
+    NE              reduce using rule 33 (expression -> expression GT expression .)
+    RPAREN          reduce using rule 33 (expression -> expression GT expression .)
+    COMMA           reduce using rule 33 (expression -> expression GT expression .)
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+
+  ! PLUS            [ reduce using rule 33 (expression -> expression GT expression .) ]
+  ! MINUS           [ reduce using rule 33 (expression -> expression GT expression .) ]
+  ! MULTIPLY        [ reduce using rule 33 (expression -> expression GT expression .) ]
+  ! DIVIDE          [ reduce using rule 33 (expression -> expression GT expression .) ]
+  ! LT              [ shift and go to state 32 ]
+  ! GT              [ shift and go to state 33 ]
+  ! LE              [ shift and go to state 34 ]
+  ! GE              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NE              [ shift and go to state 37 ]
+
+
+state 52
+
+    (34) expression -> expression LE expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       reduce using rule 34 (expression -> expression LE expression .)
+    LT              reduce using rule 34 (expression -> expression LE expression .)
+    GT              reduce using rule 34 (expression -> expression LE expression .)
+    LE              reduce using rule 34 (expression -> expression LE expression .)
+    GE              reduce using rule 34 (expression -> expression LE expression .)
+    EQ              reduce using rule 34 (expression -> expression LE expression .)
+    NE              reduce using rule 34 (expression -> expression LE expression .)
+    RPAREN          reduce using rule 34 (expression -> expression LE expression .)
+    COMMA           reduce using rule 34 (expression -> expression LE expression .)
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+
+  ! PLUS            [ reduce using rule 34 (expression -> expression LE expression .) ]
+  ! MINUS           [ reduce using rule 34 (expression -> expression LE expression .) ]
+  ! MULTIPLY        [ reduce using rule 34 (expression -> expression LE expression .) ]
+  ! DIVIDE          [ reduce using rule 34 (expression -> expression LE expression .) ]
+  ! LT              [ shift and go to state 32 ]
+  ! GT              [ shift and go to state 33 ]
+  ! LE              [ shift and go to state 34 ]
+  ! GE              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NE              [ shift and go to state 37 ]
+
+
+state 53
+
+    (35) expression -> expression GE expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       reduce using rule 35 (expression -> expression GE expression .)
+    LT              reduce using rule 35 (expression -> expression GE expression .)
+    GT              reduce using rule 35 (expression -> expression GE expression .)
+    LE              reduce using rule 35 (expression -> expression GE expression .)
+    GE              reduce using rule 35 (expression -> expression GE expression .)
+    EQ              reduce using rule 35 (expression -> expression GE expression .)
+    NE              reduce using rule 35 (expression -> expression GE expression .)
+    RPAREN          reduce using rule 35 (expression -> expression GE expression .)
+    COMMA           reduce using rule 35 (expression -> expression GE expression .)
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+
+  ! PLUS            [ reduce using rule 35 (expression -> expression GE expression .) ]
+  ! MINUS           [ reduce using rule 35 (expression -> expression GE expression .) ]
+  ! MULTIPLY        [ reduce using rule 35 (expression -> expression GE expression .) ]
+  ! DIVIDE          [ reduce using rule 35 (expression -> expression GE expression .) ]
+  ! LT              [ shift and go to state 32 ]
+  ! GT              [ shift and go to state 33 ]
+  ! LE              [ shift and go to state 34 ]
+  ! GE              [ shift and go to state 35 ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NE              [ shift and go to state 37 ]
+
+
+state 54
+
+    (36) expression -> expression EQ expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       reduce using rule 36 (expression -> expression EQ expression .)
+    EQ              reduce using rule 36 (expression -> expression EQ expression .)
+    NE              reduce using rule 36 (expression -> expression EQ expression .)
+    RPAREN          reduce using rule 36 (expression -> expression EQ expression .)
+    COMMA           reduce using rule 36 (expression -> expression EQ expression .)
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+    LT              shift and go to state 32
+    GT              shift and go to state 33
+    LE              shift and go to state 34
+    GE              shift and go to state 35
+
+  ! PLUS            [ reduce using rule 36 (expression -> expression EQ expression .) ]
+  ! MINUS           [ reduce using rule 36 (expression -> expression EQ expression .) ]
+  ! MULTIPLY        [ reduce using rule 36 (expression -> expression EQ expression .) ]
+  ! DIVIDE          [ reduce using rule 36 (expression -> expression EQ expression .) ]
+  ! LT              [ reduce using rule 36 (expression -> expression EQ expression .) ]
+  ! GT              [ reduce using rule 36 (expression -> expression EQ expression .) ]
+  ! LE              [ reduce using rule 36 (expression -> expression EQ expression .) ]
+  ! GE              [ reduce using rule 36 (expression -> expression EQ expression .) ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NE              [ shift and go to state 37 ]
+
+
+state 55
+
+    (37) expression -> expression NE expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       reduce using rule 37 (expression -> expression NE expression .)
+    EQ              reduce using rule 37 (expression -> expression NE expression .)
+    NE              reduce using rule 37 (expression -> expression NE expression .)
+    RPAREN          reduce using rule 37 (expression -> expression NE expression .)
+    COMMA           reduce using rule 37 (expression -> expression NE expression .)
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+    LT              shift and go to state 32
+    GT              shift and go to state 33
+    LE              shift and go to state 34
+    GE              shift and go to state 35
+
+  ! PLUS            [ reduce using rule 37 (expression -> expression NE expression .) ]
+  ! MINUS           [ reduce using rule 37 (expression -> expression NE expression .) ]
+  ! MULTIPLY        [ reduce using rule 37 (expression -> expression NE expression .) ]
+  ! DIVIDE          [ reduce using rule 37 (expression -> expression NE expression .) ]
+  ! LT              [ reduce using rule 37 (expression -> expression NE expression .) ]
+  ! GT              [ reduce using rule 37 (expression -> expression NE expression .) ]
+  ! LE              [ reduce using rule 37 (expression -> expression NE expression .) ]
+  ! GE              [ reduce using rule 37 (expression -> expression NE expression .) ]
+  ! EQ              [ shift and go to state 36 ]
+  ! NE              [ shift and go to state 37 ]
+
+
+state 56
+
+    (39) expression -> LPAREN expression RPAREN .
+
+    SEMICOLON       reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+    MULTIPLY        reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+    LT              reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+    GT              reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+    LE              reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+    GE              reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+    EQ              reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+    NE              reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+    COMMA           reduce using rule 39 (expression -> LPAREN expression RPAREN .)
+
+
+state 57
+
+    (10) func_declaration -> type_specifier IDENTIFIER LPAREN params RPAREN compound_stmt .
+
+    INT             reduce using rule 10 (func_declaration -> type_specifier IDENTIFIER LPAREN params RPAREN compound_stmt .)
+    FLOAT           reduce using rule 10 (func_declaration -> type_specifier IDENTIFIER LPAREN params RPAREN compound_stmt .)
+    $end            reduce using rule 10 (func_declaration -> type_specifier IDENTIFIER LPAREN params RPAREN compound_stmt .)
+
+
+state 58
+
+    (16) compound_stmt -> LBRACE . stmt_list RBRACE
+    (17) stmt_list -> . stmt_list statement
+    (18) stmt_list -> . empty
+    (47) empty -> .
+
+    RBRACE          reduce using rule 47 (empty -> .)
+    LBRACE          reduce using rule 47 (empty -> .)
+    IF              reduce using rule 47 (empty -> .)
+    RETURN          reduce using rule 47 (empty -> .)
+    MINUS           reduce using rule 47 (empty -> .)
+    LPAREN          reduce using rule 47 (empty -> .)
+    INT_LITERAL     reduce using rule 47 (empty -> .)
+    FLOAT_LITERAL   reduce using rule 47 (empty -> .)
+    IDENTIFIER      reduce using rule 47 (empty -> .)
+    STRING_LITERAL  reduce using rule 47 (empty -> .)
+    INT             reduce using rule 47 (empty -> .)
+    FLOAT           reduce using rule 47 (empty -> .)
+
+    stmt_list                      shift and go to state 62
+    empty                          shift and go to state 63
+
+state 59
+
+    (13) param_list -> param_list COMMA param .
+
+    COMMA           reduce using rule 13 (param_list -> param_list COMMA param .)
+    RPAREN          reduce using rule 13 (param_list -> param_list COMMA param .)
+
+
+state 60
+
+    (43) expression -> IDENTIFIER LPAREN arg_list RPAREN .
+
+    SEMICOLON       reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+    PLUS            reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+    MINUS           reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+    MULTIPLY        reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+    DIVIDE          reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+    LT              reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+    GT              reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+    LE              reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+    GE              reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+    EQ              reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+    NE              reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+    RPAREN          reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+    COMMA           reduce using rule 43 (expression -> IDENTIFIER LPAREN arg_list RPAREN .)
+
+
+state 61
+
+    (44) arg_list -> arg_list COMMA . expression
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 64
+
+state 62
+
+    (16) compound_stmt -> LBRACE stmt_list . RBRACE
+    (17) stmt_list -> stmt_list . statement
+    (19) statement -> . expr_stmt
+    (20) statement -> . var_declaration
+    (21) statement -> . compound_stmt
+    (22) statement -> . if_stmt
+    (23) statement -> . return_stmt
+    (27) expr_stmt -> . expression SEMICOLON
+    (6) var_declaration -> . type_specifier IDENTIFIER SEMICOLON
+    (7) var_declaration -> . type_specifier IDENTIFIER ASSIGN expression SEMICOLON
+    (16) compound_stmt -> . LBRACE stmt_list RBRACE
+    (24) if_stmt -> . IF LPAREN expression RPAREN statement
+    (25) if_stmt -> . IF LPAREN expression RPAREN statement ELSE statement
+    (26) return_stmt -> . RETURN expression SEMICOLON
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . FLOAT
+
+    RBRACE          shift and go to state 65
+    LBRACE          shift and go to state 58
+    IF              shift and go to state 74
+    RETURN          shift and go to state 75
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+
+    statement                      shift and go to state 66
+    expr_stmt                      shift and go to state 67
+    var_declaration                shift and go to state 68
+    compound_stmt                  shift and go to state 69
+    if_stmt                        shift and go to state 70
+    return_stmt                    shift and go to state 71
+    expression                     shift and go to state 72
+    type_specifier                 shift and go to state 73
+
+state 63
+
+    (18) stmt_list -> empty .
+
+    RBRACE          reduce using rule 18 (stmt_list -> empty .)
+    LBRACE          reduce using rule 18 (stmt_list -> empty .)
+    IF              reduce using rule 18 (stmt_list -> empty .)
+    RETURN          reduce using rule 18 (stmt_list -> empty .)
+    MINUS           reduce using rule 18 (stmt_list -> empty .)
+    LPAREN          reduce using rule 18 (stmt_list -> empty .)
+    INT_LITERAL     reduce using rule 18 (stmt_list -> empty .)
+    FLOAT_LITERAL   reduce using rule 18 (stmt_list -> empty .)
+    IDENTIFIER      reduce using rule 18 (stmt_list -> empty .)
+    STRING_LITERAL  reduce using rule 18 (stmt_list -> empty .)
+    INT             reduce using rule 18 (stmt_list -> empty .)
+    FLOAT           reduce using rule 18 (stmt_list -> empty .)
+
+
+state 64
+
+    (44) arg_list -> arg_list COMMA expression .
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    RPAREN          reduce using rule 44 (arg_list -> arg_list COMMA expression .)
+    COMMA           reduce using rule 44 (arg_list -> arg_list COMMA expression .)
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+    LT              shift and go to state 32
+    GT              shift and go to state 33
+    LE              shift and go to state 34
+    GE              shift and go to state 35
+    EQ              shift and go to state 36
+    NE              shift and go to state 37
+
+
+state 65
+
+    (16) compound_stmt -> LBRACE stmt_list RBRACE .
+
+    INT             reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    FLOAT           reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    $end            reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    RBRACE          reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    LBRACE          reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    IF              reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    RETURN          reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    MINUS           reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    LPAREN          reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    INT_LITERAL     reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    FLOAT_LITERAL   reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    IDENTIFIER      reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    STRING_LITERAL  reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+    ELSE            reduce using rule 16 (compound_stmt -> LBRACE stmt_list RBRACE .)
+
+
+state 66
+
+    (17) stmt_list -> stmt_list statement .
+
+    RBRACE          reduce using rule 17 (stmt_list -> stmt_list statement .)
+    LBRACE          reduce using rule 17 (stmt_list -> stmt_list statement .)
+    IF              reduce using rule 17 (stmt_list -> stmt_list statement .)
+    RETURN          reduce using rule 17 (stmt_list -> stmt_list statement .)
+    MINUS           reduce using rule 17 (stmt_list -> stmt_list statement .)
+    LPAREN          reduce using rule 17 (stmt_list -> stmt_list statement .)
+    INT_LITERAL     reduce using rule 17 (stmt_list -> stmt_list statement .)
+    FLOAT_LITERAL   reduce using rule 17 (stmt_list -> stmt_list statement .)
+    IDENTIFIER      reduce using rule 17 (stmt_list -> stmt_list statement .)
+    STRING_LITERAL  reduce using rule 17 (stmt_list -> stmt_list statement .)
+    INT             reduce using rule 17 (stmt_list -> stmt_list statement .)
+    FLOAT           reduce using rule 17 (stmt_list -> stmt_list statement .)
+
+
+state 67
+
+    (19) statement -> expr_stmt .
+
+    RBRACE          reduce using rule 19 (statement -> expr_stmt .)
+    LBRACE          reduce using rule 19 (statement -> expr_stmt .)
+    IF              reduce using rule 19 (statement -> expr_stmt .)
+    RETURN          reduce using rule 19 (statement -> expr_stmt .)
+    MINUS           reduce using rule 19 (statement -> expr_stmt .)
+    LPAREN          reduce using rule 19 (statement -> expr_stmt .)
+    INT_LITERAL     reduce using rule 19 (statement -> expr_stmt .)
+    FLOAT_LITERAL   reduce using rule 19 (statement -> expr_stmt .)
+    IDENTIFIER      reduce using rule 19 (statement -> expr_stmt .)
+    STRING_LITERAL  reduce using rule 19 (statement -> expr_stmt .)
+    INT             reduce using rule 19 (statement -> expr_stmt .)
+    FLOAT           reduce using rule 19 (statement -> expr_stmt .)
+    ELSE            reduce using rule 19 (statement -> expr_stmt .)
+
+
+state 68
+
+    (20) statement -> var_declaration .
+
+    RBRACE          reduce using rule 20 (statement -> var_declaration .)
+    LBRACE          reduce using rule 20 (statement -> var_declaration .)
+    IF              reduce using rule 20 (statement -> var_declaration .)
+    RETURN          reduce using rule 20 (statement -> var_declaration .)
+    MINUS           reduce using rule 20 (statement -> var_declaration .)
+    LPAREN          reduce using rule 20 (statement -> var_declaration .)
+    INT_LITERAL     reduce using rule 20 (statement -> var_declaration .)
+    FLOAT_LITERAL   reduce using rule 20 (statement -> var_declaration .)
+    IDENTIFIER      reduce using rule 20 (statement -> var_declaration .)
+    STRING_LITERAL  reduce using rule 20 (statement -> var_declaration .)
+    INT             reduce using rule 20 (statement -> var_declaration .)
+    FLOAT           reduce using rule 20 (statement -> var_declaration .)
+    ELSE            reduce using rule 20 (statement -> var_declaration .)
+
+
+state 69
+
+    (21) statement -> compound_stmt .
+
+    RBRACE          reduce using rule 21 (statement -> compound_stmt .)
+    LBRACE          reduce using rule 21 (statement -> compound_stmt .)
+    IF              reduce using rule 21 (statement -> compound_stmt .)
+    RETURN          reduce using rule 21 (statement -> compound_stmt .)
+    MINUS           reduce using rule 21 (statement -> compound_stmt .)
+    LPAREN          reduce using rule 21 (statement -> compound_stmt .)
+    INT_LITERAL     reduce using rule 21 (statement -> compound_stmt .)
+    FLOAT_LITERAL   reduce using rule 21 (statement -> compound_stmt .)
+    IDENTIFIER      reduce using rule 21 (statement -> compound_stmt .)
+    STRING_LITERAL  reduce using rule 21 (statement -> compound_stmt .)
+    INT             reduce using rule 21 (statement -> compound_stmt .)
+    FLOAT           reduce using rule 21 (statement -> compound_stmt .)
+    ELSE            reduce using rule 21 (statement -> compound_stmt .)
+
+
+state 70
+
+    (22) statement -> if_stmt .
+
+    RBRACE          reduce using rule 22 (statement -> if_stmt .)
+    LBRACE          reduce using rule 22 (statement -> if_stmt .)
+    IF              reduce using rule 22 (statement -> if_stmt .)
+    RETURN          reduce using rule 22 (statement -> if_stmt .)
+    MINUS           reduce using rule 22 (statement -> if_stmt .)
+    LPAREN          reduce using rule 22 (statement -> if_stmt .)
+    INT_LITERAL     reduce using rule 22 (statement -> if_stmt .)
+    FLOAT_LITERAL   reduce using rule 22 (statement -> if_stmt .)
+    IDENTIFIER      reduce using rule 22 (statement -> if_stmt .)
+    STRING_LITERAL  reduce using rule 22 (statement -> if_stmt .)
+    INT             reduce using rule 22 (statement -> if_stmt .)
+    FLOAT           reduce using rule 22 (statement -> if_stmt .)
+    ELSE            reduce using rule 22 (statement -> if_stmt .)
+
+
+state 71
+
+    (23) statement -> return_stmt .
+
+    RBRACE          reduce using rule 23 (statement -> return_stmt .)
+    LBRACE          reduce using rule 23 (statement -> return_stmt .)
+    IF              reduce using rule 23 (statement -> return_stmt .)
+    RETURN          reduce using rule 23 (statement -> return_stmt .)
+    MINUS           reduce using rule 23 (statement -> return_stmt .)
+    LPAREN          reduce using rule 23 (statement -> return_stmt .)
+    INT_LITERAL     reduce using rule 23 (statement -> return_stmt .)
+    FLOAT_LITERAL   reduce using rule 23 (statement -> return_stmt .)
+    IDENTIFIER      reduce using rule 23 (statement -> return_stmt .)
+    STRING_LITERAL  reduce using rule 23 (statement -> return_stmt .)
+    INT             reduce using rule 23 (statement -> return_stmt .)
+    FLOAT           reduce using rule 23 (statement -> return_stmt .)
+    ELSE            reduce using rule 23 (statement -> return_stmt .)
+
+
+state 72
+
+    (27) expr_stmt -> expression . SEMICOLON
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       shift and go to state 76
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+    LT              shift and go to state 32
+    GT              shift and go to state 33
+    LE              shift and go to state 34
+    GE              shift and go to state 35
+    EQ              shift and go to state 36
+    NE              shift and go to state 37
+
+
+state 73
+
+    (6) var_declaration -> type_specifier . IDENTIFIER SEMICOLON
+    (7) var_declaration -> type_specifier . IDENTIFIER ASSIGN expression SEMICOLON
+
+    IDENTIFIER      shift and go to state 77
+
+
+state 74
+
+    (24) if_stmt -> IF . LPAREN expression RPAREN statement
+    (25) if_stmt -> IF . LPAREN expression RPAREN statement ELSE statement
+
+    LPAREN          shift and go to state 78
+
+
+state 75
+
+    (26) return_stmt -> RETURN . expression SEMICOLON
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 79
+
+state 76
+
+    (27) expr_stmt -> expression SEMICOLON .
+
+    RBRACE          reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+    LBRACE          reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+    IF              reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+    RETURN          reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+    MINUS           reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+    LPAREN          reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+    INT_LITERAL     reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+    FLOAT_LITERAL   reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+    IDENTIFIER      reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+    STRING_LITERAL  reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+    INT             reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+    FLOAT           reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+    ELSE            reduce using rule 27 (expr_stmt -> expression SEMICOLON .)
+
+
+state 77
+
+    (6) var_declaration -> type_specifier IDENTIFIER . SEMICOLON
+    (7) var_declaration -> type_specifier IDENTIFIER . ASSIGN expression SEMICOLON
+
+    SEMICOLON       shift and go to state 11
+    ASSIGN          shift and go to state 12
+
+
+state 78
+
+    (24) if_stmt -> IF LPAREN . expression RPAREN statement
+    (25) if_stmt -> IF LPAREN . expression RPAREN statement ELSE statement
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+
+    expression                     shift and go to state 80
+
+state 79
+
+    (26) return_stmt -> RETURN expression . SEMICOLON
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    SEMICOLON       shift and go to state 81
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+    LT              shift and go to state 32
+    GT              shift and go to state 33
+    LE              shift and go to state 34
+    GE              shift and go to state 35
+    EQ              shift and go to state 36
+    NE              shift and go to state 37
+
+
+state 80
+
+    (24) if_stmt -> IF LPAREN expression . RPAREN statement
+    (25) if_stmt -> IF LPAREN expression . RPAREN statement ELSE statement
+    (28) expression -> expression . PLUS expression
+    (29) expression -> expression . MINUS expression
+    (30) expression -> expression . MULTIPLY expression
+    (31) expression -> expression . DIVIDE expression
+    (32) expression -> expression . LT expression
+    (33) expression -> expression . GT expression
+    (34) expression -> expression . LE expression
+    (35) expression -> expression . GE expression
+    (36) expression -> expression . EQ expression
+    (37) expression -> expression . NE expression
+
+    RPAREN          shift and go to state 82
+    PLUS            shift and go to state 28
+    MINUS           shift and go to state 29
+    MULTIPLY        shift and go to state 30
+    DIVIDE          shift and go to state 31
+    LT              shift and go to state 32
+    GT              shift and go to state 33
+    LE              shift and go to state 34
+    GE              shift and go to state 35
+    EQ              shift and go to state 36
+    NE              shift and go to state 37
+
+
+state 81
+
+    (26) return_stmt -> RETURN expression SEMICOLON .
+
+    RBRACE          reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+    LBRACE          reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+    IF              reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+    RETURN          reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+    MINUS           reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+    LPAREN          reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+    INT_LITERAL     reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+    FLOAT_LITERAL   reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+    IDENTIFIER      reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+    STRING_LITERAL  reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+    INT             reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+    FLOAT           reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+    ELSE            reduce using rule 26 (return_stmt -> RETURN expression SEMICOLON .)
+
+
+state 82
+
+    (24) if_stmt -> IF LPAREN expression RPAREN . statement
+    (25) if_stmt -> IF LPAREN expression RPAREN . statement ELSE statement
+    (19) statement -> . expr_stmt
+    (20) statement -> . var_declaration
+    (21) statement -> . compound_stmt
+    (22) statement -> . if_stmt
+    (23) statement -> . return_stmt
+    (27) expr_stmt -> . expression SEMICOLON
+    (6) var_declaration -> . type_specifier IDENTIFIER SEMICOLON
+    (7) var_declaration -> . type_specifier IDENTIFIER ASSIGN expression SEMICOLON
+    (16) compound_stmt -> . LBRACE stmt_list RBRACE
+    (24) if_stmt -> . IF LPAREN expression RPAREN statement
+    (25) if_stmt -> . IF LPAREN expression RPAREN statement ELSE statement
+    (26) return_stmt -> . RETURN expression SEMICOLON
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . FLOAT
+
+    LBRACE          shift and go to state 58
+    IF              shift and go to state 74
+    RETURN          shift and go to state 75
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+
+    expression                     shift and go to state 72
+    statement                      shift and go to state 83
+    expr_stmt                      shift and go to state 67
+    var_declaration                shift and go to state 68
+    compound_stmt                  shift and go to state 69
+    if_stmt                        shift and go to state 70
+    return_stmt                    shift and go to state 71
+    type_specifier                 shift and go to state 73
+
+state 83
+
+    (24) if_stmt -> IF LPAREN expression RPAREN statement .
+    (25) if_stmt -> IF LPAREN expression RPAREN statement . ELSE statement
+
+  ! shift/reduce conflict for ELSE resolved as shift
+    RBRACE          reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .)
+    LBRACE          reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .)
+    IF              reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .)
+    RETURN          reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .)
+    MINUS           reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .)
+    LPAREN          reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .)
+    INT_LITERAL     reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .)
+    FLOAT_LITERAL   reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .)
+    IDENTIFIER      reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .)
+    STRING_LITERAL  reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .)
+    INT             reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .)
+    FLOAT           reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .)
+    ELSE            shift and go to state 84
+
+  ! ELSE            [ reduce using rule 24 (if_stmt -> IF LPAREN expression RPAREN statement .) ]
+
+
+state 84
+
+    (25) if_stmt -> IF LPAREN expression RPAREN statement ELSE . statement
+    (19) statement -> . expr_stmt
+    (20) statement -> . var_declaration
+    (21) statement -> . compound_stmt
+    (22) statement -> . if_stmt
+    (23) statement -> . return_stmt
+    (27) expr_stmt -> . expression SEMICOLON
+    (6) var_declaration -> . type_specifier IDENTIFIER SEMICOLON
+    (7) var_declaration -> . type_specifier IDENTIFIER ASSIGN expression SEMICOLON
+    (16) compound_stmt -> . LBRACE stmt_list RBRACE
+    (24) if_stmt -> . IF LPAREN expression RPAREN statement
+    (25) if_stmt -> . IF LPAREN expression RPAREN statement ELSE statement
+    (26) return_stmt -> . RETURN expression SEMICOLON
+    (28) expression -> . expression PLUS expression
+    (29) expression -> . expression MINUS expression
+    (30) expression -> . expression MULTIPLY expression
+    (31) expression -> . expression DIVIDE expression
+    (32) expression -> . expression LT expression
+    (33) expression -> . expression GT expression
+    (34) expression -> . expression LE expression
+    (35) expression -> . expression GE expression
+    (36) expression -> . expression EQ expression
+    (37) expression -> . expression NE expression
+    (38) expression -> . MINUS expression
+    (39) expression -> . LPAREN expression RPAREN
+    (40) expression -> . INT_LITERAL
+    (41) expression -> . FLOAT_LITERAL
+    (42) expression -> . IDENTIFIER
+    (43) expression -> . IDENTIFIER LPAREN arg_list RPAREN
+    (48) expression -> . STRING_LITERAL
+    (8) type_specifier -> . INT
+    (9) type_specifier -> . FLOAT
+
+    LBRACE          shift and go to state 58
+    IF              shift and go to state 74
+    RETURN          shift and go to state 75
+    MINUS           shift and go to state 16
+    LPAREN          shift and go to state 17
+    INT_LITERAL     shift and go to state 18
+    FLOAT_LITERAL   shift and go to state 19
+    IDENTIFIER      shift and go to state 14
+    STRING_LITERAL  shift and go to state 20
+    INT             shift and go to state 7
+    FLOAT           shift and go to state 8
+
+    expression                     shift and go to state 72
+    statement                      shift and go to state 85
+    expr_stmt                      shift and go to state 67
+    var_declaration                shift and go to state 68
+    compound_stmt                  shift and go to state 69
+    if_stmt                        shift and go to state 70
+    return_stmt                    shift and go to state 71
+    type_specifier                 shift and go to state 73
+
+state 85
+
+    (25) if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .
+
+    RBRACE          reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+    LBRACE          reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+    IF              reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+    RETURN          reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+    MINUS           reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+    LPAREN          reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+    INT_LITERAL     reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+    FLOAT_LITERAL   reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+    IDENTIFIER      reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+    STRING_LITERAL  reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+    INT             reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+    FLOAT           reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+    ELSE            reduce using rule 25 (if_stmt -> IF LPAREN expression RPAREN statement ELSE statement .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ELSE in state 83 resolved as shift
