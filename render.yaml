@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: c-syntax-adventure
+    env: python
+    rootDir: deployment
+    buildCommand: |
+      # Install Python dependencies
+      pip install -r requirements.txt
+      
+      # Build frontend
+      cd ../Compiler-frontend
+      npm install
+      npm run build
+      cd ../deployment
+      
+      # Ensure backend files are in the correct place
+      mkdir -p ../Compiler-backend/api_server
+      cp -r ../Compiler-backend/api_server/* ../Compiler-backend/api_server/
+      
+      # Install graphviz
+      apt-get update && apt-get install -y graphviz
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
+      - key: NODE_VERSION
+        value: 16.15.0
+    packages:
+      - graphviz 
