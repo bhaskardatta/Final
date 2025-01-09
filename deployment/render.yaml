@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: c-syntax-adventure
+    env: python
+    buildCommand: ./build.sh
+    startCommand: ./start.sh
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
+      - key: NODE_VERSION
+        value: 16.15.0
+    healthCheckPath: /api/health 
